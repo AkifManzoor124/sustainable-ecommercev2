@@ -15,7 +15,7 @@ const SingleRating = ({ title, initialRating }) => {
             paddingLeft: 10,
             paddingRight: 10
         }}>
-            <h1>{title}:</h1>
+            <h2 style={{ paddingRight: 8 }}>{title}:</h2>
             <Rating
                 stop={5}
                 initialRating={initialRating}

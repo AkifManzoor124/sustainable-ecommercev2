@@ -1,5 +1,5 @@
 
-// const apiKey = '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';
+const apiKey = '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';
 
 export function getResponseFromChatGPT(message) {
     const url = "https://api.openai.com/v1/chat/completions";

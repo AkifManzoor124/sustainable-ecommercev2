@@ -4,7 +4,7 @@ import SingleRating from './SingleRating'
 import WorldMap from "react-svg-worldmap";
 import { getResponseFromChatGPT } from '../../chatgpt'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
+import { faCoins as solidCoins } from '@fortawesome/free-solid-svg-icons';
 import { faGear as solidGear } from '@fortawesome/free-solid-svg-icons';
 import { faPuzzlePiece as solidPuzzlePiece } from '@fortawesome/free-solid-svg-icons';
 
@@ -85,13 +85,8 @@ const Popup = () => {
 
             const regex2 = /Final Verdict:\s*(.+)/;
             const match = regex2.exec(response.message.content)
-            const finalVerdict = match ? match[1] : null;
-
-            if (finalVerdict) {
-              console.log(finalVerdict);
-            } else {
-              console.log("Final Verdict not found in response message.");
-            }
+            const finalVerdictResponse = match ? match[1] : null;
+            setFinalVerdict(finalVerdictResponse);
 
             console.log(ratings);
             console.log(ratings.map(rating => parseInt(rating.split("/")[0])));
@@ -110,13 +105,13 @@ const Popup = () => {
   return (
     <div className="App">
       <div>
-        <div className="Header" style={{ display: 'flex', flexDirection: 'row', padding: '10px', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div className="Header" style={{ display: 'flex', flexDirection: 'row', padding: 15, paddingRight: 15, paddingLeft: 15, borderBottomWidth: 20, borderBottomColor: 'black', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'lightGreen', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.2)' }}>
           <div>
             <FontAwesomeIcon icon={solidPuzzlePiece} className="fa-2x low" style={{ fontSize: '2rem' }} />
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-            <FontAwesomeIcon icon={solidStar} className="fa-2x low" style={{ fontSize: '2rem' }} />
-            <span style={{ fontSize: '2rem', marginLeft: '25px' }}>{points}</span>
+            <FontAwesomeIcon icon={solidCoins} className="fa-2x low" style={{ fontSize: '2rem' }} />
+            <span style={{ fontSize: '2rem', marginLeft: '10px' }}>{points}</span>
           </div>
           <div>
             <FontAwesomeIcon icon={solidGear} className="fa-2x low" style={{ fontSize: '2rem' }} />
@@ -130,9 +125,13 @@ const Popup = () => {
           <SingleRating title={"Recyclability"} initialRating={rating[4]} />
           <SingleRating title={"Overall Rating"} initialRating={rating[5]} />
         </div>
+        <div>
+          <h2>Final Verdict:</h2>
+          {finalVerdict}
+        </div>
       </div>
       <div>
-        <div>Product Sourcing Report</div>
+        <h1 style={{ paddingTop: 20 }}>Product Sourcing Report</h1>
         <WorldMap
           color="red"
           // title="Product Sourcing Reports"
@@ -141,7 +140,7 @@ const Popup = () => {
           data={data}
         />
         <div>
-          <h1>Powered by OpenAI</h1>
+          <h4>Powered by OpenAI</h4>
         </div>
       </div>
     </div>
