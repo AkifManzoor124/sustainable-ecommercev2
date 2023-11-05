@@ -22,8 +22,7 @@
         "*://www.amazon.ca/*"
       ],
       "js": [
-        "contentScript.bundle.js",
-        "content.js"
+        "contentScript.bundle.js"
       ],
       "css": [
         "content.styles.css"
