@@ -61,24 +61,18 @@ const Popup = () => {
 
         console.log(prompt);
 
-        // getResponseFromChatGPT(prompt)
-        //   .then(response => {
-        //     console.log('WEARENOWBACKFROMGPT');
-        //     console.log(response);
-        //     const regex = /(\d+)\/5/g;
-        //     const ratings = response.message.match(regex);
-        //     console.log(ratings);
-        //     setRatings(ratings.map(rating => parseInt(rating, 5)));
-        //   }).catch(error => {
-        //     console.error(error);
-        //   });
-
-        var response = getResponseFromChatGPT(prompt);
-        const regex = /(\d+)\/5/g;
-        const ratings = response.match(regex);
-        console.log(ratings);
-        console.log(ratings.map(rating => parseInt(rating.split("/")[0])));
-        setRatings(ratings.map(rating => parseInt(rating.split("/")[0])));
+        getResponseFromChatGPT(prompt)
+          .then(response => {
+            console.log('WEARENOWBACKFROMGPT');
+            console.log(response);
+            const regex = /(\d+)\/5/g;
+            const ratings = response.message.content.match(regex);
+            console.log(ratings);
+            console.log(ratings.map(rating => parseInt(rating.split("/")[0])));
+            setRatings(ratings.map(rating => parseInt(rating.split("/")[0])));
+          }).catch(error => {
+            console.error(error);
+          });
 
       }
     });

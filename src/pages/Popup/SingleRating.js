@@ -6,7 +6,15 @@ import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
 
 const SingleRating = ({ title, initialRating }) => {
     return (
-        <div className="SingleRating" style={{ alignItems: 'center', display: 'flex' }}>
+        <div className="SingleRating" style={{
+            alignItems: 'center',
+            display: 'flex',
+            borderBottomWidth: 1,
+            borderBottomColor: 'white',
+            borderBottomStyle: 'solid',
+            paddingLeft: 10,
+            paddingRight: 10
+        }}>
             <h1>{title}:</h1>
             <Rating
                 stop={5}
