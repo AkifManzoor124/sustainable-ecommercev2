@@ -8,5 +8,5 @@ reactAppContainer.id = 'amazon-sustainable-ecommerce-rating-extension-root'; // 
 dpContainer.appendChild(reactAppContainer);
 
 const scriptElement = document.createElement('script');
-scriptElement.src = chrome.runtime.getURL('./pages/Popup/index.jsx'); // Load your React app script
+scriptElement.src = chrome.runtime.getURL('overlay.bundle.js'); // Load your React app script
 reactAppContainer.appendChild(scriptElement);
