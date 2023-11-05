@@ -12,6 +12,7 @@ const Popup = () => {
   const [points, setPoints] = useState(30);
   const [rating, setRatings] = useState([0, 0, 0, 0, 0, 0])
   const [productData, setProductData] = useState({});
+  const [finalVerdict, setFinalVerdict] = useState(null);
 
   const data = [
     { country: "cn", value: 'Found traces of lithium in warehouse' }, // china
@@ -81,6 +82,17 @@ const Popup = () => {
             console.log(response);
             const regex = /(\d+)\/5/g;
             const ratings = response.message.content.match(regex);
+
+            const regex2 = /Final Verdict:\s*(.+)/;
+            const match = regex2.exec(response.message.content)
+            const finalVerdict = match ? match[1] : null;
+
+            if (finalVerdict) {
+              console.log(finalVerdict);
+            } else {
+              console.log("Final Verdict not found in response message.");
+            }
+
             console.log(ratings);
             console.log(ratings.map(rating => parseInt(rating.split("/")[0])));
             setRatings(ratings.map(rating => parseInt(rating.split("/")[0])));
