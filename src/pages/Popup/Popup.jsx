@@ -100,7 +100,7 @@ const Popup = () => {
 
     // This is where you can perform side effects
 
-  }, []);
+  });
 
   return (
     <div className="App">

@@ -1,5 +1,5 @@
 
-const apiKey = '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';
+const apiKey = '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';
 
 export function getResponseFromChatGPT(message) {
     const url = "https://api.openai.com/v1/chat/completions";
@@ -10,7 +10,8 @@ export function getResponseFromChatGPT(message) {
                 "role": "system",
                 "content": `${message}`
             }
-        ]
+        ],
+        temperature: 0.2,
     };
     const headers = {
         "Content-Type": "application/json",
@@ -22,6 +23,7 @@ export function getResponseFromChatGPT(message) {
         headers: headers
     }).then(response => {
         if (response.ok) {
+            console.log('response was good');
             return response.json();
         } else {
             throw new Error("ChatGPT API request failed.");
