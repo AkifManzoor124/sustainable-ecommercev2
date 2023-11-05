@@ -21,20 +21,20 @@ const SingleRating = ({ title, initialRating }) => {
                 initialRating={initialRating}
                 readonly
                 emptySymbol={[
-                    <FontAwesomeIcon icon={emptyStar} className="fa-2x low" />,
-                    <FontAwesomeIcon icon={emptyStar} className="fa-2x low" />,
-                    <FontAwesomeIcon icon={emptyStar} className="fa-2x medium" />,
-                    <FontAwesomeIcon icon={emptyStar} className="fa-2x medium" />,
-                    <FontAwesomeIcon icon={emptyStar} className="fa-2x high" />,
-                    <FontAwesomeIcon icon={emptyStar} className="fa-2x high" />
+                    <FontAwesomeIcon icon={emptyStar} className="fa-2x low" style={{ color: 'red' }} />,
+                    <FontAwesomeIcon icon={emptyStar} className="fa-2x low" style={{ color: 'red' }} />,
+                    <FontAwesomeIcon icon={emptyStar} className="fa-2x medium" style={{ color: 'orange' }} />,
+                    <FontAwesomeIcon icon={emptyStar} className="fa-2x medium" style={{ color: 'orange' }} />,
+                    <FontAwesomeIcon icon={emptyStar} className="fa-2x high" style={{ color: 'green' }} />,
+                    <FontAwesomeIcon icon={emptyStar} className="fa-2x high" style={{ color: 'green' }} />
                 ]}
                 fullSymbol={[
-                    <FontAwesomeIcon icon={solidStar} className="fa-2x low" />,
-                    <FontAwesomeIcon icon={solidStar} className="fa-2x low" />,
-                    <FontAwesomeIcon icon={solidStar} className="fa-2x medium" />,
-                    <FontAwesomeIcon icon={solidStar} className="fa-2x medium" />,
-                    <FontAwesomeIcon icon={solidStar} className="fa-2x high" />,
-                    <FontAwesomeIcon icon={solidStar} className="fa-2x high" />
+                    <FontAwesomeIcon icon={solidStar} className="fa-2x low" style={{ color: 'red' }} />,
+                    <FontAwesomeIcon icon={solidStar} className="fa-2x low" style={{ color: 'red' }} />,
+                    <FontAwesomeIcon icon={solidStar} className="fa-2x medium" style={{ color: 'orange' }} />,
+                    <FontAwesomeIcon icon={solidStar} className="fa-2x medium" style={{ color: 'orange' }} />,
+                    <FontAwesomeIcon icon={solidStar} className="fa-2x high" tyle={{ color: 'green' }} />,
+                    <FontAwesomeIcon icon={solidStar} className="fa-2x high" tyle={{ color: 'green' }} />
                 ]}
             />
         </div>

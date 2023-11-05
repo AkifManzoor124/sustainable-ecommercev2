@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Popup.css';
 import SingleRating from './SingleRating'
+import WorldMap from "react-svg-worldmap";
 import { getResponseFromChatGPT } from '../../chatgpt'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +12,19 @@ const Popup = () => {
   const [points, setPoints] = useState(30);
   const [rating, setRatings] = useState([0, 0, 0, 0, 0, 0])
   const [productData, setProductData] = useState({});
+
+  const data = [
+    { country: "cn", value: 'Found traces of lithium in warehouse' }, // china
+    { country: "in", value: 'warehouse reported to be closing down' }, // india
+    { country: "us", value: 'company being sued for going against ethical standards' }, // united statesa
+    { country: "id", value: 'earthquake causing shortages of batteries' }, // indonesia
+    { country: "pk", value: 'Serious drought affecting manganese concentration in soil' }, // pakistan
+    { country: "br", value: 'reports of company relocating aboriginal homes' }, // brazil
+    { country: "ng", value: 'Reports of animal cruelty when testing products' }, // nigeria
+    { country: "bd", value: 'warehouse reported to be shutdown over the holidays' }, // bangladesh
+    { country: "ru", value: 'supplylines have been shutdown' }, // russia
+    { country: "mx", value: 'company involvement local militia' }, // mexico
+  ];
 
   useEffect(() => {
     // Code to run when the component mounts and whenever the dependencies change
@@ -83,38 +97,40 @@ const Popup = () => {
 
   return (
     <div className="App">
-      <div className="Header">
-        {/* TODO: Extension Logo */}
-        <div>
-          <FontAwesomeIcon icon={solidPuzzlePiece} className="fa-2x low" />,
+      <div>
+        <div className="Header" style={{ display: 'flex', flexDirection: 'row', padding: '10px', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div>
+            <FontAwesomeIcon icon={solidPuzzlePiece} className="fa-2x low" style={{ fontSize: '2rem' }} />
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+            <FontAwesomeIcon icon={solidStar} className="fa-2x low" style={{ fontSize: '2rem' }} />
+            <span style={{ fontSize: '2rem', marginLeft: '25px' }}>{points}</span>
+          </div>
+          <div>
+            <FontAwesomeIcon icon={solidGear} className="fa-2x low" style={{ fontSize: '2rem' }} />
+          </div>
         </div>
-        <>
-          <div>
-            {/* TODO: Add Star logo */}
-            <div>
-              <FontAwesomeIcon icon={solidStar} className="fa-2x low" />, {/* Replaced with the Font Awesome star icon */}
-            </div>
-            {/*  */}
-            <div>{points}</div>
-            {/* TODO: Add avatar logo */}
-            <div></div>
-          </div>
-          {/* TODO: Add settings icon */}
-          <div>
-            <FontAwesomeIcon icon={solidGear} className="fa-2x low" />,
-          </div>
-        </>
+        <div>
+          <SingleRating title={"Ingredients"} initialRating={rating[0]} />
+          <SingleRating title={"Packaging"} initialRating={rating[1]} />
+          <SingleRating title={"Sustainable Sourcing"} initialRating={rating[2]} />
+          <SingleRating title={"Certifications"} initialRating={rating[3]} />
+          <SingleRating title={"Recyclability"} initialRating={rating[4]} />
+          <SingleRating title={"Overall Rating"} initialRating={rating[5]} />
+        </div>
       </div>
       <div>
-        <SingleRating title={"Ingredients"} initialRating={rating[0]} />
-        <SingleRating title={"Packaging"} initialRating={rating[1]} />
-        <SingleRating title={"Sustainable Sourcing"} initialRating={rating[2]} />
-        <SingleRating title={"Certifications"} initialRating={rating[3]} />
-        <SingleRating title={"Recyclability"} initialRating={rating[4]} />
-        <SingleRating title={"Overall Rating"} initialRating={rating[5]} />
-      </div>
-      <div>
-        <h1>Powered by OpenAI - ChatGPT</h1>
+        <div>Product Sourcing Report</div>
+        <WorldMap
+          color="red"
+          // title="Product Sourcing Reports"
+          value-suffix="people"
+          size="lg"
+          data={data}
+        />
+        <div>
+          <h1>Powered by OpenAI</h1>
+        </div>
       </div>
     </div>
   );
